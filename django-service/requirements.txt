@@ -1,0 +1,4 @@
+django==4.2.13
+pymongo==4.7.2
+requests==2.31.0
+python-dotenv==1.0.1

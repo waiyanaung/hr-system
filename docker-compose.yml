@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  mongodb:
+    image: mongo:6
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  fastapi-service:
+    build: ./fastapi-service
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017
+    depends_on:
+      - mongodb
+    volumes:
+      - ./fastapi-service:/app    # hot reload in dev
+
+  django-service:
+    build: ./django-service
+    ports:
+      - "8080:8080"
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017
+      - FASTAPI_URL=http://fastapi-service:8000
+      - DJANGO_SECRET_KEY=dev-secret-change-in-prod
+    depends_on:
+      - fastapi-service
+    volumes:
+      - ./django-service:/app     # hot reload in dev
+
+volumes:
+  mongo_data:

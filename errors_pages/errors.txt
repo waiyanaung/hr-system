@@ -1,0 +1,4 @@
+
+(venv) PS C:\waiyanaung\testing\hr-system\django-service> python manage.py startapp hrapp
+CommandError: 'hrapp' conflicts with the name of an existing Python module and cannot be used as an app name. Please try another name.
+(venv) PS C:\waiyanaung\testing\hr-system\django-service>
