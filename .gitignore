@@ -4,4 +4,3 @@ venv/
 *.sqlite3
 .env
 .claude/settings.local.json
-Documents_for_Developers/
