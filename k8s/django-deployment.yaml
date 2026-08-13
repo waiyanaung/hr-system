@@ -19,7 +19,15 @@ spec:
         - containerPort: 8080
         env:
         - name: FASTAPI_URL
-          value: http://fastapi-service:8000
+          value: "http://fastapi-service:8000"    # ← this must exist
+        - name: DJANGO_SECRET_KEY
+          value: "dev-secret-change-in-prod"
+        - name: MONGO_URL
+          value: "mongodb://mongodb:27017"
+        - name: ALLOWED_HOSTS
+          value: "*"
+        - name: CSRF_TRUSTED_ORIGINS
+          value: "https://hrsystem.digitaltreemyanmar.com,http://hrsystem.digitaltreemyanmar.com"
 ---
 apiVersion: v1
 kind: Service
